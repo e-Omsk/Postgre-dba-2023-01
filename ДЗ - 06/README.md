@@ -1,12 +1,12 @@
 GCE
 Проект: postgres197605.
 
-### Базовое задание 
+# Базовое задание 
 
 ## Запустить кластер после переноса постгриса на примонтированный диск (udo -u postgres pg_ctlcluster 14 main start):
 
-# Кластер не запустился. Ошибка: postgres is not in the sudoers file.  
-# This incident will be reported. Т.е. пострига нет в файле sudoers.
+### Кластер не запустился. Ошибка: postgres is not in the sudoers file.  
+### This incident will be reported. Т.е. пострига нет в файле sudoers.
 
 ## Найти конфигурационный параметр в файлах раположенных в /etc/postgresql/14/main который надо поменять и поменяйте его:
 # Редактируем конфигурационный файл  sudo nano /etc/postgresql/14/main/postgresql.conf.
