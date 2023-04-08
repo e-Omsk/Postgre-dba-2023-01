@@ -29,7 +29,7 @@ GCE
 > CREATE PUBLICATION test2_pub FOR TABLE test2;   
 > Прописываем в pg_hba.conf (host    otus            postgres        10.128.0.8/32          scram-sha-256)
 > Перегружаю кластер: sudo pg_ctlcluster 14 main restart   
-> Задаем пароль: \password . 
+> Задаем пароль: \password .   
 > Как оказалось надо было прописать (не слушал): listen_addresses = 'localhost, 10.128.0.12' в /etc/postgresql/14/main/postgresql.conf.   
 > На первой ВМ:  
 > CREATE SUBSCRIPTION test2_sub   
