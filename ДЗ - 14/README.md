@@ -40,4 +40,13 @@ GCE
 
 Третья ВМ использовать как реплику для чтения и бэкапов (подписаться на таблицы из ВМ №1 и №2 ). Небольшое описание, того, что получилось.
 
->
+> Создал БД otus.  
+> Создал таблички test и test2  
+> Прописываем в pg_hba.conf (host    otus            postgres        10.128.0.13/32          scram-sha-256) на обеих ВМ чтобы пускало.  
+> При создании подписки выругалась: "could not create replication slot "test2_sub": ERROR:  replication slot "test2_sub" already exists".  
+> Пришлось создать новую публикацию: CREATE PUBLICATION test3_pub FOR TABLE test2; для второй ВМ.  
+> И подписаться на третьей ВМ:   
+> CREATE SUBSCRIPTION test3_sub     
+> CONNECTION 'host=10.128.0.12 port=5432 user=postgres password=qwerty1 dbname=otus'   
+> PUBLICATION test3_pub WITH (copy_data = true);  
+> То же самое с таблицей test c первой ВМ.
