@@ -36,4 +36,8 @@ GCE
 > CONNECTION 'host=10.128.0.12 port=5432 user=postgres password=qwerty1 dbname=otus'   
 > PUBLICATION test2_pub WITH (copy_data = true);  
 > Проверяем: \dRs . Представления: SELECT * FROM pg_stat_subscription \gx . Так же select-ом. Все в порядке.  
-> 
+
+
+Третья ВМ использовать как реплику для чтения и бэкапов (подписаться на таблицы из ВМ №1 и №2 ). Небольшое описание, того, что получилось.
+
+>
