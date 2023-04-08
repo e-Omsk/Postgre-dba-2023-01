@@ -13,12 +13,27 @@ GCE
 > Создаем публикацию: CREATE PUBLICATION test_pub FOR TABLE test;  
 > Задаем пароль: \password   
 > На второй ВМ создаю в БД otus таблицу test2 с данными для записи и test пустая для чтения.  
-> создадим подписку к БД по Порту с Юзером и Паролем и Копированием данных=true  
+> Cоздадим подписку к БД по Порту с Юзером и Паролем и Копированием данных=true  
 > CREATE SUBSCRIPTION test_sub   
 > CONNECTION 'host=10.128.0.8 port=5432 user=postgres password=qwerty dbname=otus'   
 > PUBLICATION test_pub WITH (copy_data = true);    
 > требует прописать pg_hba.conf entry for host "10.128.0.12", user "postgres", database "otus", SSL encryption connection to server a.....   
 > Прописываем в pg_hba.conf (host    otus            postgres        10.128.0.12/32          scram-sha-256) на первой ВМ  
 > Повторяем команду. CREATE SUBSCRIPTION УРА! Подписка создана по таблице test.   
->   
->   
+> Проверяем на всякий случай: \dRs . Представления: SELECT * FROM pg_stat_subscription \gx .   
+> Вносим значение в test первой ВМ и смотрим изменения в test второй ВМ.    
+>        
+> C таблицей test2 аналогично: 
+> На второй ВМ:  
+> ALTER SYSTEM SET wal_level = logical;   
+> CREATE PUBLICATION test2_pub FOR TABLE test2;   
+> Прописываем в pg_hba.conf (host    otus            postgres        10.128.0.8/32          scram-sha-256)
+> Перегружаю кластер: sudo pg_ctlcluster 14 main restart   
+> Задаем пароль: \password . 
+> Как оказалось надо было прописать (не слушал): listen_addresses = 'localhost, 10.128.0.12' в /etc/postgresql/14/main/postgresql.conf.   
+> На первой ВМ:  
+> CREATE SUBSCRIPTION test2_sub   
+> CONNECTION 'host=10.128.0.12 port=5432 user=postgres password=qwerty1 dbname=otus'   
+> PUBLICATION test2_pub WITH (copy_data = true);  
+> Проверяем: \dRs . Представления: SELECT * FROM pg_stat_subscription \gx . Так же select-ом. Все в порядке.  
+> 
