@@ -7,3 +7,8 @@ GCE
 
 > Создал четыре ВМ на ресурсе от Google cloud. Установил postgresql 14 версии.  
 > На первой ВМ создал БД Otus. Создал таблицу test для записи и test2 для чтения.
+> Смотрю уровень реликации show wal_level; Устанавливаю ALTER SYSTEM SET wal_level = logical, если не logical. 
+> Перегружаю кластер sudo pg_ctlcluster 14 main restart
+> 
+> 
+> 
