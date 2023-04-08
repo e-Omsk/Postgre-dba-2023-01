@@ -7,8 +7,9 @@ GCE
 
 > Создал четыре ВМ на ресурсе от Google cloud. Установил postgresql 14 версии.  
 > На первой ВМ создал БД Otus. Создал таблицу test для записи и test2 для чтения.
-> Смотрю уровень реликации show wal_level; Устанавливаю ALTER SYSTEM SET wal_level = logical, если не logical. 
-> Перегружаю кластер sudo pg_ctlcluster 14 main restart
-> 
-> 
+> Смотрю уровень реликации: show wal_level; Устанавливаю: ALTER SYSTEM SET wal_level = logical, если не logical. 
+> Выходим. Перегружаю кластер: sudo pg_ctlcluster 14 main restart
+> Опять подключаемся к клиенту БД otus: sudo -u postgres psql -p 5432 -d otus
+> Создаем публикацию: CREATE PUBLICATION test_pub FOR TABLE test;
+> Задаем пароль: \password 
 > 
