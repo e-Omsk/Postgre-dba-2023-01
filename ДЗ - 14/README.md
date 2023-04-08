@@ -50,3 +50,11 @@ GCE
 > CONNECTION 'host=10.128.0.12 port=5432 user=postgres password=qwerty1 dbname=otus'   
 > PUBLICATION test3_pub WITH (copy_data = true);  
 > То же самое с таблицей test c первой ВМ.
+
+Реализовать горячее реплицирование для высокой доступности на 4ВМ. Источником должна выступать ВМ №3. Написать с какими проблемами столкнулись.
+
+> На третьей ВМ:  
+> Раскамитил synchronous_commit = on в postgresql.conf.  
+> Под аккаунтом postgres необходимо создать пользователя для репликации: createuser --replication -P rep_user .  
+>   
+> 
