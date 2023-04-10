@@ -55,6 +55,17 @@ GCE
 
 > На третьей ВМ:  
 > Раскамитил synchronous_commit = on в postgresql.conf.  
-> Под аккаунтом postgres необходимо создать пользователя для репликации: createuser --replication -P rep_user .  
->   
-> 
+> Под аккаунтом postgres необходимо создать пользователя для репликации: CREATE ROLE rep_user  WITH REPLICATION PASSWORD '12345' LOGIN; .  
+> Смотрю уровень реликации: show wal_level; Устанавливаю: ALTER SYSTEM SET wal_level =  replica, если не  replica.  
+> Добовляем в файл pg_hba.conf, имя пользователя для репликаций и IP адрес сервера:  
+> host    replication     rep_user        10.128.0.13/32           scram-sha-256  
+> Перезапускаем Postgresql: sudo pg_ctlcluster 14 main restart.  
+> На четвертой ВМ: 
+> Разремарил: hot_standby_feedback = off, max_standby_streaming_delay = 30s в postgresql.conf. 
+> Останавливаем кластер.
+> В режиме подчиненного сервера у нас все данные реплицируются с основного, нам необходимо удалить файлы из каталога main:  
+> sudo rm -rf /var/lib/postgresql/14/main/*    
+> Делаем бэкап с опцией восстановления(-R) c третьего хоста:  
+> sudo -u postgres pg_basebackup -h 10.128.0.13 -p 5432 -U rep_user -R -D /var/lib/postgresql/14/main
+> Запускаем кластер.  
+> Проверяем. Горячее реплецирование работает.
