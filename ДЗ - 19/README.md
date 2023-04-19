@@ -1,4 +1,4 @@
-GCE
+GCE   
 Проект: postgres197605.  
 VM postgres-0  
 БД otus
