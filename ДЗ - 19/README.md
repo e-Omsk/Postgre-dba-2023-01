@@ -18,7 +18,8 @@ VM postgres-0
 > Создаем индекс: 
 > create index idx_anytable_id on anytable(id);  
 > Смотрим explain. Сканирование по индексу. Воторой cost = 4,31. Значительно уменьшился:   
-> Index Only Scan using idx_anytable_id on anytable  (cost=0.29..4.31 rows=1 width=4)  
+> Index Only Scan using idx_anytable_id on anytable  (cost=0.29..4.31 rows=1 width=4)   
+>  Index Cond: (id = 60000)    
 
 2. Реализовать индекс для полнотекстового поиска.
 
@@ -29,7 +30,8 @@ VM postgres-0
 > Создаем индекс для полнотекстового поиска:    
 > create index idx_anytable_text on anytable(colum1);     
 > Проверяем explain. Уже индекстное сканирование(Index Scan using idx_anytable_text). Воторой cost = 8,44. Значительно уменьшился:      
-> Index Scan using idx_anytable_text on anytable  (cost=0.42..8.44 rows=1 width=77)
+> Index Scan using idx_anytable_text on anytable  (cost=0.42..8.44 rows=1 width=77)  
+> Index Cond: (colum1 = '300004.031835575529453'::text)
 
 3. Реализовать индекс на часть таблицы или индексна поле с функцией.  
 
@@ -43,4 +45,4 @@ VM postgres-0
 > create index idx_anytable_text_text on anytable(colum2, colum3);    
 > Проверяем explain. Уже индекстное сканирование(Index Scan using idx_anytable_text_text). Воторой cost = 8,44. Значительно уменьшился:   
 > Index Scan using idx_anytable_text_text on anytable  (cost=0.42..8.44 rows=1 width=77)    
-> 
+> Index Cond: ((colum2 = '300008.557095817138523'::text) AND (colum3 = '300001.843707564357473'::text))
