@@ -11,8 +11,7 @@ VM postgres-0
 1. Создать индекс к какой-либо из таблиц вашей БД.
  
 > Смотрим:    
-> explain  
-> select id from anytable where id = 60000;    
+> explain select id from anytable where id = 60000;    
 > Получилось сканирование по последовательности. Второй cost = 2070 машиновремени:   
 > Seq Scan on anytable  (cost=0.00..2070.00 rows=1 width=4)   
 > Создаем индекс: 
@@ -34,6 +33,14 @@ VM postgres-0
 > Index Cond: (colum1 = '300004.031835575529453'::text)
 
 3. Реализовать индекс на часть таблицы или индексна поле с функцией.  
+
+> Создаем индекс:  
+> create index idx_anytable_id_1000 on anytable(id) where id < 1000;  
+> Проверяем explain:   
+> explain select id from anytable where id < 100;    
+> Получаем индекстное сканирование(Index Only Scan using idx_anytable_id_1000 on anytable):
+> Index Only Scan using idx_anytable_id_1000 on anytable  (cost=0.28..6.01 rows=99 width=4)  
+> Index Cond: (id < 100)   
 
 4. Создать индекс на несколько полей.
 
