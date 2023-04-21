@@ -38,7 +38,7 @@ VM postgres-0
 > create index idx_anytable_id_1000 on anytable(id) where id < 1000;  
 > Проверяем explain:   
 > explain select id from anytable where id < 100;    
-> Получаем индекстное сканирование(Index Only Scan using idx_anytable_id_1000 on anytable):
+> Получаем индекстное сканирование(Index Only Scan using idx_anytable_id_1000 on anytable):   
 > Index Only Scan using idx_anytable_id_1000 on anytable  (cost=0.28..6.01 rows=99 width=4)  
 > Index Cond: (id < 100)   
 
