@@ -16,6 +16,6 @@ VM postgres-0
 > Seq Scan on anytable  (cost=0.00..2070.00 rows=1 width=4)   
 > Создаем индекс: 
 > create index idx_anytable_id on anytable(id);  
-> Смотрим explain. Сканирование по индексу. Воторой cost = 4,31. Значительно уменьшился: 
+> Смотрим explain. Сканирование по индексу. Воторой cost = 4,31. Значительно уменьшился:   
 > Index Only Scan using idx_anytable_id on anytable  (cost=0.29..4.31 rows=1 width=4)  
 > 
