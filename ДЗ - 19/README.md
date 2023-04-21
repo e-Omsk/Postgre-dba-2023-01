@@ -10,11 +10,10 @@ VM postgres-0
 
 > Создал таблицу anytable пять полей. Первая id, остальные текстовые.  
 > Смотрим:    
-> explain
+> explain  
 > select id from anytable where id = 60000;    
 > Получилось, сканирование по последовательности. Второй cost = 2070 машиновремени:   
->  Seq Scan on anytable  (cost=0.00..2070.00 rows=1 width=4)
-   Filter: (id = 60000)
+> Seq Scan on anytable  (cost=0.00..2070.00 rows=1 width=4)   
 > Создаем индекс: 
 > create index idx_anytable_id on anytable(id);  
 > Смотрим explain. Сканирование по индексу. Воторой cost = 4,31. Значительно уменьшился: 
