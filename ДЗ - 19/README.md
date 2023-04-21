@@ -31,6 +31,8 @@ VM postgres-0
 > Проверяем explain. Уже индекстное сканирование(Index Scan using idx_anytable_text). Воторой cost = 8,44. Значительно уменьшился:      
 > Index Scan using idx_anytable_text on anytable  (cost=0.42..8.44 rows=1 width=77)
 
+3. Реализовать индекс на часть таблицы или индексна поле с функцией.  
+
 4. Создать индекс на несколько полей.
 
 > Смотрим:   
