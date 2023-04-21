@@ -29,4 +29,4 @@ VM postgres-0
 > create index idx_anytable_text on anytable(colum1);   
 > Проверяем explain. Воторой cost = 8,44. Значительно уменьшился: 
 > Index Scan using idx_anytable_text on anytable  (cost=0.42..8.44 rows=1 width=77)
-
+> 
