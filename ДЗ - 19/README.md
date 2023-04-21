@@ -45,4 +45,9 @@ VM postgres-0
 > create index idx_anytable_text_text on anytable(colum2, colum3);    
 > Проверяем explain. Уже индекстное сканирование(Index Scan using idx_anytable_text_text). Воторой cost = 8,44. Значительно уменьшился:   
 > Index Scan using idx_anytable_text_text on anytable  (cost=0.42..8.44 rows=1 width=77)    
-> Index Cond: ((colum2 = '300008.557095817138523'::text) AND (colum3 = '300001.843707564357473'::text))
+> Index Cond: ((colum2 = '300008.557095817138523'::text) AND (colum3 = '300001.843707564357473'::text))  
+> Сделаем индекс на одно поле:  
+> create index idx_anytable_text2 on anytable(colum2);   
+> Проверим. Отличия от индеска на два поля нет:  
+> Index Scan using idx_anytable_text2 on anytable  (cost=0.42..8.44 rows=1 width=77)   
+>  Index Cond: (colum2 = '300008.557095817138523'::text)  
