@@ -23,10 +23,10 @@ VM postgres-0
 
 > Смотрим:  
 > explain select * from anytable where colum1='300004.031835575529453';  
-> Получилось  сканирование по последовательности. Второй cost = 2070 машиновремени:
-> Seq Scan on anytable  (cost=0.00..2070.00 rows=1 width=77)  
-> Создаем индекс для полнотекстового поиска:  
-> create index idx_anytable_text on anytable(colum1);   
-> Проверяем explain. Воторой cost = 8,44. Значительно уменьшился: 
+> Получилось  сканирование по последовательности. Второй cost = 2070 машиновремени:   
+> Seq Scan on anytable  (cost=0.00..2070.00 rows=1 width=77)    
+> Создаем индекс для полнотекстового поиска:    
+> create index idx_anytable_text on anytable(colum1);     
+> Проверяем explain. Воторой cost = 8,44. Значительно уменьшился:   
 > Index Scan using idx_anytable_text on anytable  (cost=0.42..8.44 rows=1 width=77)
 > 
