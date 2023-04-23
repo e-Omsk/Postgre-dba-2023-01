@@ -78,4 +78,7 @@ VM postgres-0
 > select *   
 > from books b, author auth  
 > where b.author = auth.id;    
+
+2. Реализовать левостороннее (или правостороннее) соединение двух или более таблиц.   
+
 > 
