@@ -59,7 +59,7 @@ VM postgres-0
 > Index Scan using idx_anytable_text2 on anytable  (cost=0.42..8.44 rows=1 width=77)   
 >  Index Cond: (colum2 = '300008.557095817138523'::text)  
 
-2 вариант: В результате выполнения ДЗ вы научитесь пользоваться различными вариантами соединения таблиц.  
+2 вариант: Различные варианты соединения таблиц.  
   
 Создал и заполнил две таблицы:     
 create table author (id serial, name text);      
