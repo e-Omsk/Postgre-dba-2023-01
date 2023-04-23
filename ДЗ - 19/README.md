@@ -81,4 +81,12 @@ VM postgres-0
 
 2. Реализовать левостороннее (или правостороннее) соединение двух или более таблиц.   
 
-> 
+> левостороннее:   
+> from books b    
+> left join author auth   
+>         on b.author = auth.id;   
+> правостороннее:   
+> select *    
+> from books b     
+> right join author auth    
+>           on b.author = auth.id;     
