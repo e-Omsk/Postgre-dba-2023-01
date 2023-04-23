@@ -70,4 +70,12 @@ VM postgres-0
                          
  1. Реализовать прямое соединение двух или более таблиц:   
  
- >  
+> select *   
+> from books b  
+> join author auth  
+>      on b.author = auth.id;  
+>  Или:      
+> select *   
+> from books b, author auth  
+> where b.author = auth.id;    
+> 
