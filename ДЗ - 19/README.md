@@ -113,11 +113,11 @@ VM postgres-0
 
 5. Реализовать запрос, в котором будут использованы разные типы соединений.
 
-> Создал еще таблицу Читатели: create table reader (id serial, name text, book int); 
-> Заполнил: insert into reader values (1,'Ivanod',2),(2,'Петров',2),(3,'Сидоров',3),(4,'Питерман',4);   
+> Создал еще таблицу Читатели: create table reader (id serial, name text, book int);    
+> Заполнил: insert into reader values (1,'Ivanod',2),(2,'Петров',2),(3,'Сидоров',3),(4,'Питерман',4);    
 > Захолет посмотреть кто кого читал и какие еще авторы остались:   
-> select *  
-> from reader r  
-> join books b on b.id = r.book  
-> right join author auth on b.author = auth.id;  
+> select *    
+> from reader r    
+> join books b on b.id = r.book    
+> right join author auth on b.author = auth.id;    
 >   
