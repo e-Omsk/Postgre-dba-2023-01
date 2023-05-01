@@ -22,16 +22,26 @@ VM postgres-0
 >  Index Cond: (id = 60000)    
 
 2. Реализовать индекс для полнотекстового поиска.
-
-> Смотрим:  
-> explain select * from anytable where colum1='300004.031835575529453';  
-> Получилось  сканирование по последовательности. Второй cost = 2070 машиновремени:       
-> Seq Scan on anytable  (cost=0.00..2070.00 rows=1 width=77)    
-> Создаем индекс для полнотекстового поиска:    
-> create index idx_anytable_text on anytable(colum1);     
-> Проверяем explain. Уже индекстное сканирование(Index Scan using idx_anytable_text). Воторой cost = 8,44. Значительно уменьшился:      
-> Index Scan using idx_anytable_text on anytable  (cost=0.42..8.44 rows=1 width=77)  
-> Index Cond: (colum1 = '300004.031835575529453'::text)
+   
+> Для полнотекстового поиска импользуем индекс GIN. Преобразуем наше поле в to_tsvector:    
+> select colum1, to_tsvector(colum1)from anytable;    
+> Создаем новое поле:   
+> alter table anytable add column some_text_lexeme tsvector;    
+> Обновляем это поле:  
+> update anytable set some_text_lexeme = to_tsvector(colum1);    
+> Проверяем без индекса:  
+> explain select colum1 from anytable where some_text_lexeme @@ to_tsquery('543209.919580683361055'); Строчку взял из середины таблицы.  
+>  Gather  (cost=1000.00..15888.94 rows=400 width=23)
+>   Workers Planned: 1     
+>  ->  Parallel Seq Scan on anytable  (cost=0.00..14848.94 rows=235 width=23)     
+>         Filter: (some_text_lexeme @@ to_tsquery('543209.919580683361055'::text))         
+> Создадим интекс: CREATE INDEX search_index_ord ON anytable USING GIN (some_text_lexeme);   
+> Посмотрим что получилось:      
+>  Bitmap Heap Scan on anytable  (cost=19.35..1179.25 rows=400 width=23)     
+>    Recheck Cond: (some_text_lexeme @@ to_tsquery('543209.919580683361055'::text))    
+>    ->  Bitmap Index Scan on search_index_ord  (cost=0.00..19.25 rows=400 width=0)    
+>          Index Cond: (some_text_lexeme @@ to_tsquery('543209.919580683361055'::text))      
+> Уменьшилось с 15888.94 до 1179.25.    
 
 3. Реализовать индекс на часть таблицы или индексна поле с функцией.  
 
