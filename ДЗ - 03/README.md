@@ -21,10 +21,10 @@ VM postgresql-docker
 • развернем контейнер с PostgreSQL 15 смонтировав в него /var/lib/postgresql:   
 > (подключаем созданную сеть к контейнеру сервера Postgres)           
 > sudo docker run --name pg-server --network pg-net -e POSTGRES_PASSWORD=123 -d -p 5432:5432 -v     
-> /var/lib/postgres:/var/lib/postgresql/data postgres:15     
+> /var/lib/postgres:/var/lib/postgresql/data postgres:15        
 > Постгрис запущен.
 
 • Развернем контейнер с клиентом postgres,    
 • подключимся из контейнера с клиентом к контейнеру с сервером:
-> sudo docker run -it --rm --network pg-net --name pg-client postgres:15 psql -h pg-server -U postgres
+> sudo docker run -it --rm --network pg-net --name pg-client postgres:15 psql -h pg-server -U postgres    
 > получается запущен один контейнер с постгрисом и контейнер с клиентом.
