@@ -13,7 +13,8 @@ VM postgresql-docker
 > Создал ВМ на Google cloud и установил Ubuntu 22.04 через web интерфейс.   
 
 • Поставить на нем Docker Engine
-> curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && rm get-docker.sh && sudo usermod -aG docker $USER   
+> curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && rm get-docker.sh && sudo usermod -aG docker $USER 
+  
 •  создаем внутреннюю  сеть для контейнера:    
 > sudo docker network create pg-net   
 > подключаем созданную сеть к контейнеру сервера Postgres    
