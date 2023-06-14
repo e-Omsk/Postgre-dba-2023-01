@@ -24,7 +24,7 @@ VM postgresql-docker
 > /var/lib/postgres:/var/lib/postgresql/data postgres:15     
 > Постгрис запущен.
 
-• Развернем контейнер с клиентом postgres,
+• Развернем контейнер с клиентом postgres,    
 • подключимся из контейнера с клиентом к контейнеру с сервером:
 > sudo docker run -it --rm --network pg-net --name pg-client postgres:15 psql -h pg-server -U postgres
 > получается запущен один контейнер с постгрисом и контейнер с клиентом.
