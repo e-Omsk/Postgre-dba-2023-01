@@ -16,11 +16,11 @@ VM postgresql-docker
 > curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && rm get-docker.sh && sudo usermod -aG docker $USER   
 •  создаем внутреннюю  сеть для контейнера:    
 > sudo docker network create pg-net   
-> подключаем созданную сеть к контейнеру сервера Postgres 
+> подключаем созданную сеть к контейнеру сервера Postgres    
 •  (при этом создаестя каталог /var/lib/postgres и    
-•      разворачиваем контейнер с PostgreSQL 15 смонтировав в него /var/lib/postgresql):    
-> sudo docker run --name pg-server --network pg-net -e POSTGRES_PASSWORD=123 -d -p 5432:5432 -v  
-> /var/lib/postgres:/var/lib/postgresql/data postgres:15    
+•      разворачиваем контейнер с PostgreSQL 15 смонтировав в него /var/lib/postgresql):        
+> sudo docker run --name pg-server --network pg-net -e POSTGRES_PASSWORD=123 -d -p 5432:5432 -v     
+> /var/lib/postgres:/var/lib/postgresql/data postgres:15     
 > 
 > 
 > 
