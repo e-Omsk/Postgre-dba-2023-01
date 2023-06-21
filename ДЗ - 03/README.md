@@ -13,7 +13,7 @@ VM postgresql-docker
 > Создал ВМ на Google cloud и установил Ubuntu 22.04 через web интерфейс.   
 
 • Поставить на нем Docker Engine
-> curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && rm get-docker.sh && sudo usermod -aG docker $USER  
+> curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && rm get-docker.sh && sudo usermod -aG docker $USER   
 >  создаем внутреннюю  сеть для контейнера:    
 > sudo docker network create pg-net  
 
@@ -35,3 +35,22 @@ VM postgresql-docker
 
 • Подключимся к контейнеру с сервером с ноутбука/компьютера извне инстансов GCP/ЯО/места установки докера:   
 > 
+
+• Останвливаем контейнер с сервером:   
+> sudo docker stop 8b218c9f3f22
+
+• Удаляем контейнер с сервером:  
+> sudo docker rm 8b218c9f3f22
+
+• Создаем его заново:
+> udo docker run --name pg-server --network pg-net -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 -v   /var/lib/postgres:/var/lib/postgresql/data postgres:15
+
+• Подключился снова из контейнера с клиентом к контейнеру с сервером:   
+> sudo docker run -it --rm --network pg-net --name pg-client postgres:15 psql -h pg-server -U postgres
+
+• Проверил, что данные остались на месте:    
+> \l
+> \c otus
+> select * from test;
+
+
