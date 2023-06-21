@@ -49,8 +49,8 @@ VM postgresql-docker
 > sudo docker run -it --rm --network pg-net --name pg-client postgres:15 psql -h pg-server -U postgres
 
 • Проверил, что данные остались на месте:    
-> \l
-> \c otus
-> select * from test;
+> \l    
+> \c otus     
+> select * from test;    
 
 
