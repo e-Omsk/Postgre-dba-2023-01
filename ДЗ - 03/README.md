@@ -34,7 +34,7 @@ VM postgresql-docker
 > create table test  as select  generate_series(1,10) as id;
 
 • Подключимся к контейнеру с сервером с ноутбука/компьютера извне инстансов GCP/ЯО/места установки докера:   
-> 
+> psql -p 5432 -U postgres -h 34.172.250.32 -d postgres -W
 
 • Останвливаем контейнер с сервером:   
 > sudo docker stop 8b218c9f3f22
