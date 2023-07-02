@@ -21,20 +21,23 @@ VM postgresql-1
 4. зайдите в созданную базу данных под пользователем postgres:   
 > \c testdb    
 > будет сообщение: You are now connected to database "testdb" as user "postgres".  
-> и курсор: testdb=#   
+> и курсор: testdb=#     
 
 5. создайте новую схему testnm:  
-> create database otus;   
-> create table test  as select  generate_series(1,10) as id;
+> CREATE SCHEMA testnm;    
+> сообщение: CREATE SCHEMA    
 
 6. создайте новую таблицу t1 с одной колонкой c1 типа integer:  
-> psql -p 5432 -U postgres -h 34.172.250.32 -d postgres -W
+> CREATE TABLE t1(c1 integer);    
+> сообщение: CREATE TABLE    
 
 7. вставьте строку со значением c1=1:   
-> sudo docker stop 8b218c9f3f22
+> INSERT INTO t1 values(1);   
+> сообщение: INSERT 0 1   
 
 8. создайте новую роль readonly:  
-> sudo docker rm 8b218c9f3f22
+> CREATE role readonly;  
+> сообщение: CREATE ROLE  
 
 9. дайте новой роли право на подключение к базе данных testdb:
 > udo docker run --name pg-server --network pg-net -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 -v   /var/lib/postgres:/var/lib/postgresql/data postgres:15
