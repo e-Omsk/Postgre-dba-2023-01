@@ -13,45 +13,72 @@ VM postgresql-1
 1. создайте новый кластер PostgresSQL 14:    
 > Создал ВМ на Google cloud и установил Ubuntu 22.04 через web интерфейс.   
 
-• Поставить на нем Docker Engine
+2. зайдите в созданный кластер под пользователем postgres:   
 > curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && rm get-docker.sh && sudo usermod -aG docker $USER   
 >  создаем внутреннюю  сеть для контейнера:    
 > sudo docker network create pg-net  
 
-• Сделаем каталог /var/lib/postgres и    
-• развернем контейнер с PostgreSQL 15 смонтировав в него /var/lib/postgresql:   
+3. создайте новую базу данных testdb:   
 > (подключаем созданную сеть к контейнеру сервера Postgres)           
 > sudo docker run --name pg-server --network pg-net -e POSTGRES_PASSWORD=123 -d -p 5432:5432 -v     
 > /var/lib/postgres:/var/lib/postgresql/data postgres:15        
 > Постгрис запущен.
 
-• Развернем контейнер с клиентом postgres,    
-• подключимся из контейнера с клиентом к контейнеру с сервером:
+4. зайдите в созданную базу данных под пользователем postgres:
 > sudo docker run -it --rm --network pg-net --name pg-client postgres:15 psql -h pg-server -U postgres    
 > получается запущен один контейнер с постгрисом и контейнер с клиентом.  
 
-• Создадим БД otus и  таблицу с парой строк:  
+5. создайте новую схему testnm:  
 > create database otus;   
 > create table test  as select  generate_series(1,10) as id;
 
-• Подключимся к контейнеру с сервером с ноутбука/компьютера извне инстансов GCP/ЯО/места установки докера:   
+6. создайте новую таблицу t1 с одной колонкой c1 типа integer:  
 > psql -p 5432 -U postgres -h 34.172.250.32 -d postgres -W
 
-• Останвливаем контейнер с сервером:   
+7. вставьте строку со значением c1=1:   
 > sudo docker stop 8b218c9f3f22
 
-• Удаляем контейнер с сервером:  
+8. создайте новую роль readonly:  
 > sudo docker rm 8b218c9f3f22
 
-• Создаем его заново:
+9. дайте новой роли право на подключение к базе данных testdb:
 > udo docker run --name pg-server --network pg-net -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 -v   /var/lib/postgres:/var/lib/postgresql/data postgres:15
 
-• Подключился снова из контейнера с клиентом к контейнеру с сервером:   
+10. дайте новой роли право на использование схемы testnm:   
 > sudo docker run -it --rm --network pg-net --name pg-client postgres:15 psql -h pg-server -U postgres
 
-• Проверил, что данные остались на месте:    
+11. дайте новой роли право на select для всех таблиц схемы testnm:    
 > \l    
 > \c otus     
 > select * from test;    
+
+12. создайте пользователя testread с паролем test123:     
+>
+
+13. дайте роль readonly пользователю testread:     
+>
+
+14. зайдите под пользователем testread в базу данных testdb:     
+>
+
+15. сделайте select * from t1:        
+>
+
+16. получилось? (могло если вы делали сами не по шпаргалке и не упустили один существенный момент про который позже):    
+>
+
+17. напишите что именно произошло в тексте домашнего задания:     
+>
+
+18. у вас есть идеи почему? ведь права то дали?    
+>
+
+19. посмотрите на список таблиц:
+>
+
+
+
+
+
 
 
