@@ -40,18 +40,20 @@ VM postgresql-1
 > сообщение: CREATE ROLE  
 
 9. дайте новой роли право на подключение к базе данных testdb:
-> udo docker run --name pg-server --network pg-net -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 -v   /var/lib/postgres:/var/lib/postgresql/data postgres:15
+> grant connect on DATABASE testdb TO readonly;   
+> сообщение: GRANT   
 
 10. дайте новой роли право на использование схемы testnm:   
-> sudo docker run -it --rm --network pg-net --name pg-client postgres:15 psql -h pg-server -U postgres
+> grant usage on SCHEMA testnm to readonly;   
+> сообщение: GRANT   
 
 11. дайте новой роли право на select для всех таблиц схемы testnm:    
-> \l    
-> \c otus     
-> select * from test;    
+> grant SELECT on all TABLEs in SCHEMA testnm TO readonly;
+> сообщение: GRANT      
 
 12. создайте пользователя testread с паролем test123:     
->
+> CREATE USER testread with password 'test123';
+> сообщение: CREATE ROLE    
 
 13. дайте роль readonly пользователю testread:     
 >
