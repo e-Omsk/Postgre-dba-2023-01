@@ -10,7 +10,7 @@ VM postgresql-1
 
 # Базовое задание 
 
-• 1 создайте новый кластер PostgresSQL 14:    
+1. создайте новый кластер PostgresSQL 14:    
 > Создал ВМ на Google cloud и установил Ubuntu 22.04 через web интерфейс.   
 
 • Поставить на нем Docker Engine
