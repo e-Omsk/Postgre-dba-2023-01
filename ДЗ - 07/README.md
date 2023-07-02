@@ -1,7 +1,6 @@
 GCE   
 Проект: postgres197605.  
 VM postgresql-1
-БД otus
 
 # Цель:
 создание новой базы данных, схемы и таблицы   
@@ -14,19 +13,15 @@ VM postgresql-1
 > Создал ВМ на Google cloud и установил Ubuntu 22.04 через web интерфейс.   
 
 2. зайдите в созданный кластер под пользователем postgres:   
-> curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && rm get-docker.sh && sudo usermod -aG docker $USER   
->  создаем внутреннюю  сеть для контейнера:    
-> sudo docker network create pg-net  
+> sudo -u postgres psql
 
 3. создайте новую базу данных testdb:   
-> (подключаем созданную сеть к контейнеру сервера Postgres)           
-> sudo docker run --name pg-server --network pg-net -e POSTGRES_PASSWORD=123 -d -p 5432:5432 -v     
-> /var/lib/postgres:/var/lib/postgresql/data postgres:15        
-> Постгрис запущен.
+> CREATE DATABASE testdb;
 
-4. зайдите в созданную базу данных под пользователем postgres:
-> sudo docker run -it --rm --network pg-net --name pg-client postgres:15 psql -h pg-server -U postgres    
-> получается запущен один контейнер с постгрисом и контейнер с клиентом.  
+4. зайдите в созданную базу данных под пользователем postgres:   
+> \c testdb    
+> будет сообщение: You are now connected to database "testdb" as user "postgres".  
+> и курсор: testdb=#   
 
 5. создайте новую схему testnm:  
 > create database otus;   
