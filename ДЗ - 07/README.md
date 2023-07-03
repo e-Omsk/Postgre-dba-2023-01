@@ -60,20 +60,20 @@ VM postgresql-1
 > сообщение: CREATE ROLE 
 
 14. зайдите под пользователем testread в базу данных testdb:     
-> \c testdb testread
+> \c testdb testread    
 > сообщение: connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed: FATAL:  Peer authentication failed for user
-> "testread"    
-> Previous connection kept
-> вышел из консоли \q
-> зашел в pg_hba.conf: nano /etc/postgresql/15/main/pg_hba.conf
-> поменял Peer на scram-sha-256 для локального пользователя.
-> сохранился. Вышел. Рестартовал кластер: pg_ctlcluster 15 main restart.
+> "testread"        
+> Previous connection kept     
+> вышел из консоли \q     
+> зашел в pg_hba.conf: nano /etc/postgresql/15/main/pg_hba.conf    
+> поменял Peer на scram-sha-256 для локального пользователя.    
+> сохранился. Вышел. Рестартовал кластер: pg_ctlcluster 15 main restart.    
 > выдал ошибку и предложил воспользоваться другой командой: Error: cluster is running from systemd, can only restart it as root. Try
-> instead: sudo systemctl restart postgresql@15-main
-> воспользовался: sudo systemctl restart postgresql@15-main
-> снова зашел в БД testdb под пользователем "postgres"
-> на этот раз коменда отработала корректно
-> сообщение: You are now connected to database "testdb" as user "testread".   
+> instead: sudo systemctl restart postgresql@15-main     
+> воспользовался: sudo systemctl restart postgresql@15-main     
+> снова зашел в БД testdb под пользователем "postgres"    
+> на этот раз коменда отработала корректно     
+> сообщение: You are now connected to database "testdb" as user "testread".      
 
 15. сделайте select * from t1;        
 > SELECT * FROM t1;
