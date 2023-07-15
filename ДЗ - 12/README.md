@@ -3,17 +3,17 @@ GCE
 VM postgresql-1
 
 # Цель:
-создание новой базы данных, схемы и таблицы   
-создание роли для чтения данных из созданной схемы созданной базы данных   
-создание роли для чтения и записи из созданной схемы созданной базы данных    
+сделать нагрузочное тестирование PostgreSQL
+настроить параметры PostgreSQL для достижения максимальной производительности   
 
 # Базовое задание 
 
-1. создайте новый кластер PostgresSQL 14:    
+1. развернуть виртуальную машину любым удобным способом:    
 > Создал ВМ на Google cloud и установил Ubuntu 22.04 через web интерфейс.   
 
-2. зайдите в созданный кластер под пользователем postgres:   
-> sudo -u postgres psql
+2. поставить на неё PostgreSQL 15 любым способом:   
+> через ssh в командной строке: sudo apt update && sudo apt upgrade -y -q && sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && sudo apt-get update && sudo apt -y install postgresql-15
 
-3. создайте новую базу данных testdb:   
+3. настроить кластер PostgreSQL 15 на максимальную производительность не  
+обращая внимание на возможные проблемы с надежностью в случае аварийной перезагрузки виртуальной машины:     
 > CREATE DATABASE testdb;
