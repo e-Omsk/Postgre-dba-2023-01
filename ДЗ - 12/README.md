@@ -3,7 +3,7 @@ GCE
 VM postgresql-1
 
 # Цель:
-сделать нагрузочное тестирование PostgreSQL
+сделать нагрузочное тестирование PostgreSQL    
 настроить параметры PostgreSQL для достижения максимальной производительности   
 
 # Базовое задание 
@@ -14,6 +14,5 @@ VM postgresql-1
 2. поставить на неё PostgreSQL 15 любым способом:   
 > через ssh в командной строке: sudo apt update && sudo apt upgrade -y -q && sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && sudo apt-get update && sudo apt -y install postgresql-15
 
-3. настроить кластер PostgreSQL 15 на максимальную производительность не  
-обращая внимание на возможные проблемы с надежностью в случае аварийной перезагрузки виртуальной машины:     
+3. настроить кластер PostgreSQL 15 на максимальную производительность не обращая внимание на возможные проблемы с надежностью в случае аварийной перезагрузки виртуальной машины:     
 > CREATE DATABASE testdb;
