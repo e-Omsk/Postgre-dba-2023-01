@@ -1,6 +1,6 @@
 GCE   
 Проект: postgres197605.  
-VM postgresql-1
+VM postgres-dz-12
 
 # Цель:
 сделать нагрузочное тестирование PostgreSQL    
