@@ -15,7 +15,16 @@ VM postgres-dz-12
 > через ssh в командной строке: sudo apt update && sudo apt upgrade -y -q && sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && sudo apt-get update && sudo apt -y install postgresql-15
 
 3. настроить кластер PostgreSQL 15 на максимальную производительность не обращая внимание на возможные проблемы с надежностью в случае аварийной перезагрузки виртуальной машины:     
-> воспользовался утилитой pgtune для генерации параметров под мою ВМ:   
+> воспользовался утилитой pgtune для генерации параметров под мою ВМ:
+> исходные данные:
+>  DB Version: 15    
+> OS Type: linux    
+> DB Type: web    
+> Total Memory (RAM): 2 GB    
+> CPUs num: 2    
+> Connections num: 20    
+> Data Storage: ssd    
+> утилита выдала следующие значения для настройки:     
 > max_connections = 20 поставил минимальное число, т.к малое количество ядер CPU;    
 > shared_buffers = 512MB   
 > effective_cache_size = 1536MB   
