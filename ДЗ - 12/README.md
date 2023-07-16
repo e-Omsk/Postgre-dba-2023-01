@@ -27,18 +27,18 @@ VM postgres-dz-12
 > Data Storage: ssd 
    
 > утилита выдала следующие значения для настройки:     
-> max_connections = 20 поставил минимальное число, т.к малое количество ядер CPU;    
-> shared_buffers = 512MB   
-> effective_cache_size = 1536MB   
-> maintenance_work_mem = 128MB   
-> checkpoint_completion_target = 0.9   
-> wal_buffers = 16MB    
-> default_statistics_target = 100    
-> random_page_cost = 1.1    
-> effective_io_concurrency = 200    
-> work_mem = 13107kB    
-> min_wal_size = 1GB   
-> max_wal_size = 4GB    
+> max_connections = 20; было 100; поставил минимальное число, т.к малое количество ядер CPU;    
+> shared_buffers = 512MB; было 128Mb;  
+> effective_cache_size = 1536MB; было 4Gb;   
+> maintenance_work_mem = 128MB; было 64Mb;   
+> checkpoint_completion_target = 0.9; было 0.9;   
+> wal_buffers = 16MB; было -1;    
+> default_statistics_target = 100; было то же значение        
+> random_page_cost = 1.1; было 4.0;   
+> effective_io_concurrency = 200; было 1;    
+> work_mem = 13107kB; было 4Мб.      
+> min_wal_size = 1GB; было 80Мб;    
+> max_wal_size = 4GB; было 1Гб;       
 
 4. нагрузить кластер через утилиту через утилиту pgbench (https://postgrespro.ru/docs/postgrespro/14/pgbench):
 > создал и наполнил четыре таблицы () стандартным образом: /usr/bin$ sudo -u postgres pgbench -i postgres   
@@ -52,6 +52,7 @@ VM postgres-dz-12
 
 5. написать какого значения tps удалось достичь, показать какие параметры в
 какие значения устанавливали и почему:    
-> 
+> при стандартных значениях tps = 729.130982
+> при значениях от pgtune 
 
 
