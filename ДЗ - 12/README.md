@@ -44,7 +44,7 @@ VM postgres-dz-12
 4. нагрузить кластер через утилиту через утилиту pgbench (https://postgrespro.ru/docs/postgrespro/14/pgbench):
 > создал и наполнил четыре таблицы () стандартным образом:   
 > /usr/bin$ sudo -u postgres pgbench -i postgres   
-> применил утилиту pgbench для теста производительности со стандартными значениями по умолчанию при установке кластера и значениями от pgtune (Для  изменения значений захожу в  sudo nano  /etc/postgresql/15/main/postgresql.conf. Меняю значения, сохраняюсь и перегружаю > кластер sudo pg_ctlcluster 15 main restart):
+> применил утилиту pgbench для теста производительности со стандартными значениями по умолчанию при установке кластера и значениями от pgtune (Для  изменения значений захожу в  sudo nano  /etc/postgresql/15/main/postgresql.conf. Меняю значения, сохраняюсь и перегружаю кластер sudo pg_ctlcluster 15 main restart):
 >   
 > sudo -u postgres pgbench -c 20 -j 2 -P 10 -T 60  postgres    
 > где -с 20 число имитируемых клиентов (одновременных сеансов БД)    
