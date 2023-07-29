@@ -24,9 +24,9 @@ VM postgres-dz-13
 > заполнили в предыдущем пункте. 
 
 4. Под линукс пользователем Postgres создадим каталог для бэкапов:
-> под root - ом создаю каталог pg_backup: sudo mkdir pg_backup;
-> меняю владельца на postgres: sudo chown postgres.postgres /pg_backup;
-> проверяем: ls -la;   
+> под root - ом создаю каталог pg_backup: sudo mkdir pg_backup;     
+> меняю владельца на postgres: sudo chown postgres.postgres /pg_backup;     
+> проверяем: ls -la;     
 
 5. Сделаем логический бэкап используя утилиту COPY:
 >      
