@@ -40,7 +40,7 @@ VM postgres-dz-13
 > проверяем: select count(*) from backup.table2;  Сто записей. Восстановилась.
 
 7. Используя утилиту pg_dump создадим бэкап в кастомном сжатом формате двух таблиц:
-> под пользователем postgres запускаю: pg_dump -d backupdb --create -U postgres -Fc > /pg_backup/backupdb.dump
+> под пользователем postgres запускаю: pg_dump -d backupdb --create -U postgres -Fc > /pg_backup/backupdb.dump      
 > проверяю каталог: ls -la. Файл backupdb.dump создан.    
 
 8. Используя утилиту pg_restore восстановим в новую БД только вторую таблицу:    
