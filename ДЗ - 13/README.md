@@ -28,10 +28,10 @@ VM postgres-dz-13
 > меняю владельца на postgres: sudo chown postgres.postgres /pg_backup;     
 > проверяем: ls -la;     
 
-5. Сделаем логический бэкап используя утилиту COPY:
-> в консоле даю команду: \copy backup.table1 to '/pg_backup/table1_out.sql';
-> проверяю на уровне файловой: ls -la. Файл table1_out.sql создан.           
-> проверяю содержание файла: cat table1_out.sql. Данные на месте.
+5. Сделаем логический бэкап используя утилиту COPY:      
+> в консоле даю команду: \copy backup.table1 to '/pg_backup/table1_out.sql';     
+> проверяю на уровне файловой: ls -la. Файл table1_out.sql создан.             
+> проверяю содержание файла: cat table1_out.sql. Данные на месте.      
 
 6. Восстановим во вторую таблицу данные из бэкапа:   
 >      
