@@ -33,5 +33,8 @@ VM postgres-dz-13
 > проверяю на уровне файловой: ls -la. Файл table1_out.sql создан.             
 > проверяю содержание файла: cat table1_out.sql. Данные на месте.      
 
-6. Восстановим во вторую таблицу данные из бэкапа:   
->      
+6. Восстановим во вторую таблицу данные из бэкапа:      
+> создаем вторую таблицу table2: create table table2 (i int, name char(20));      
+> переносим в схему backup: ALTER TABLE table2 SET SCHEMA backup;
+> восстанввливаем данные во вторую таблицу: \copy backup.table2 from '/pg_backup/table1_out.sql';
+> проверяем: select count(*) from backup.table2;  Сто записей. Восстановилась.            
