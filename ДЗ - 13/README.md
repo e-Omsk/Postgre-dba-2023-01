@@ -43,13 +43,13 @@ VM postgres-dz-13
 > под пользователем postgres запускаю: pg_dump -d backupdb --create -U postgres -Fc > /pg_backup/backupdb.dump      
 > проверяю каталог: ls -la. Файл backupdb.dump создан.    
 
-8. Используя утилиту pg_restore восстановим в новую БД только вторую таблицу:    
-> создаем новую базу backupdb_new: CREATE DATABASE backupdb_new;
-> переходим в новую БД: \c backupdb_new
-> создаем схему backup: CREATE SCHEMA backup;
-> из под пользователя postgres в другом окне запускаю: pg_restore -d backupdb_new -t backup.table2 /pg_backup/backupdb.dump
-> проверяю в первом окне: \dt backup.* Вторая таблица table2 на месте.Первой нет.    
-> проверяю содержимое таблицы table2: SELECT count(*) from backup.table2; Сто записей. 
+8. Используя утилиту pg_restore восстановим в новую БД только вторую таблицу:        
+> создаем новую базу backupdb_new: CREATE DATABASE backupdb_new;       
+> переходим в новую БД: \c backupdb_new       
+> создаем схему backup: CREATE SCHEMA backup;        
+> из под пользователя postgres в другом окне запускаю: pg_restore -d backupdb_new -t backup.table2 /pg_backup/backupdb.dump       
+> проверяю в первом окне: \dt backup.* Вторая таблица table2 на месте.Первой нет.           
+> проверяю содержимое таблицы table2: SELECT count(*) from backup.table2; Сто записей.         
 
 ДЗ сдается в виде миниотчета на гитхабе с описанием шагов и с какими проблемами столкнулись:
 > Больших сложностей не было, единственно нужно помнить к что таблица принадлежит схеме. И если забыть о названии схемы, можно будут вылезать ошибки!       
