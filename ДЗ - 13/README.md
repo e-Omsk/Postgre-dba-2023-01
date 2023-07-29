@@ -23,18 +23,18 @@ VM postgres-dz-13
 3. Заполним таблицы автосгенерированными 100 записями:     
 > заполнили в предыдущем пункте. 
 
-4. Под линукс пользователем Postgres создадим каталог для бэкапов:
-> под root - ом создаю каталог pg_backup: sudo mkdir pg_backup;     
-> меняю владельца на postgres: sudo chown postgres.postgres /pg_backup;     
-> проверяем: ls -la;     
+4. Под линукс пользователем Postgres создадим каталог для бэкапов:     
+> под root - ом создаю каталог pg_backup: sudo mkdir pg_backup;          
+> меняю владельца на postgres: sudo chown postgres.postgres /pg_backup;          
+> проверяем: ls -la;         
 
 5. Сделаем логический бэкап используя утилиту COPY:      
 > в консоле даю команду: \copy backup.table1 to '/pg_backup/table1_out.sql';     
 > проверяю на уровне файловой: ls -la. Файл table1_out.sql создан.             
 > проверяю содержание файла: cat table1_out.sql. Данные на месте.      
 
-6. Восстановим во вторую таблицу данные из бэкапа:      
-> создаем вторую таблицу table2: create table table2 (i int, name char(20));      
-> переносим в схему backup: ALTER TABLE table2 SET SCHEMA backup;
-> восстанввливаем данные во вторую таблицу: \copy backup.table2 from '/pg_backup/table1_out.sql';
-> проверяем: select count(*) from backup.table2;  Сто записей. Восстановилась.            
+6. Восстановим во вторую таблицу данные из бэкапа:           
+> создаем вторую таблицу table2: create table table2 (i int, name char(20));            
+> переносим в схему backup: ALTER TABLE table2 SET SCHEMA backup;        
+> восстанввливаем данные во вторую таблицу: \copy backup.table2 from '/pg_backup/table1_out.sql';      
+> проверяем: select count(*) from backup.table2;  Сто записей. Восстановилась.                 
