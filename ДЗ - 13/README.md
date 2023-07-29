@@ -14,7 +14,7 @@ VM postgres-dz-13
 > создал БД backupdb: CREATE DATABASE backupdb;          
 > подключаемся к БД: \c backupdb;     
 > создаем схему backup: CREATE SCHEMA backup;     
-> создадим таблицу с заполнеными случайными данными table1: create table table1 as select generate_series(1,100) as id, md5(random()::text)::char(20) as name;         
+> создадим таблицу table1 и заполним случайными данными: create table table1 as select generate_series(1,100) as id, md5(random()::text)::char(20) as name;         
 > смотрим текущую схему SELECT current_schema(); - видим public;     
 > смотрим нашу таблицу в схеме backup \dt backup.* - ее там нет, значит она в public - e;     
 > переносим нашу таблицу в схему backup: ALTER TABLE table1 SET SCHEMA backup;     
