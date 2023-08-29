@@ -12,7 +12,7 @@ VM postgres-dz-08
 # Базовое задание 
 
 1. Создать инстанс ВМ с 2 ядрами и 4 Гб ОЗУ и SSD 10GB:    
-> Создал ВМ на Google cloud и установил Ubuntu 22.04 через web интерфейс. Параметры: 2 vCPU + 2 GB memory, диск 10 GB SSD persistent disk. 
+> Создал ВМ на Google cloud и установил Ubuntu 22.04 через web интерфейс. Параметры: 2 vCPU + 4 GB memory, диск 10 GB SSD persistent disk.    
 
 2. Установить на него PostgreSQL 15 с дефолтными настройками:   
 
