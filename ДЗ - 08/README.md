@@ -14,7 +14,9 @@ VM postgres-dz-08
 1. Создать инстанс ВМ с 2 ядрами и 4 Гб ОЗУ и SSD 10GB:    
 > Создал ВМ на Google cloud и установил Ubuntu 22.04 через web интерфейс. Параметры: 2 vCPU + 4 GB memory, диск 10 GB SSD persistent disk.    
 
-2. Установить на него PostgreSQL 15 с дефолтными настройками:   
+2. Установить на него PostgreSQL 15 с дефолтными настройками:
+> Установил командой:    
+> sudo apt update && sudo apt upgrade -y -q && sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - && sudo apt-get update && sudo apt -y install postgresql-15    
 
 3. Создать БД для тестов: выполнить pgbench -i postgres:
 4. Запустить pgbench -c8 -P 6 -T 60 -U postgres postgres:
