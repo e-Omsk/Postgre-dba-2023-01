@@ -21,8 +21,8 @@ VM postgres-dz-08
 3. Создать БД для тестов: выполнить pgbench -i postgres:
 > Зашел в консоль: sudo -u postgres psql    
 > Создал БД test: CREATE DATABASE test; 
-> Вышел \q, запустил под ползователем postgres  программу для тестов pgbench: pgbench -i test;
-> Получилось:        
+> Вышел \q, запустил под ползователем postgres  программу для тестов pgbench: pgbench -i test;        
+> Получилось:            
 creating tables...    
 generating data (client-side)...     
 100000 of 100000 tuples (100%) done (elapsed 0.11 s, remaining 0.00 s)    
