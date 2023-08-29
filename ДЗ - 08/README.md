@@ -60,9 +60,38 @@ VM postgres-dz-08
 > tps = 966.512965 (without initial connection time)       
 
 5. Применить параметры настройки PostgreSQL из прикрепленного к материалам занятия файла:    
-> 
+> Из прикрепленного файла скопировал настройки в конфигурационный файл (postgresql.auto.conf)   
+> открыл: sudo nano /var/lib/postgresql/15/main/postgresql.auto.conf 
+> перегрузил кластер.        
 
-6. Протестировать заново:
+6. Протестировать заново:    
+> результат:      
+> pgbench (15.4 (Ubuntu 15.4-1.pgdg22.04+1))    
+> starting vacuum...end.    
+> progress: 6.0 s, 968.3 tps, lat 8.218 ms stddev 4.207, 0 failed    
+> progress: 12.0 s, 964.2 tps, lat 8.295 ms stddev 4.006, 0 failed  
+> progress: 18.0 s, 972.5 tps, lat 8.226 ms stddev 3.825, 0 failed     
+> progress: 24.0 s, 976.2 tps, lat 8.194 ms stddev 4.021, 0 failed     
+> progress: 30.0 s, 980.2 tps, lat 8.160 ms stddev 3.839, 0 failed     
+> progress: 36.0 s, 992.8 tps, lat 8.058 ms stddev 3.681, 0 failed    
+> progress: 42.0 s, 988.3 tps, lat 8.088 ms stddev 3.778, 0 failed    
+> progress: 48.0 s, 986.0 tps, lat 8.117 ms stddev 3.768, 0 failed     
+> progress: 54.0 s, 936.8 tps, lat 8.537 ms stddev 4.031, 0 failed      
+> progress: 60.0 s, 951.5 tps, lat 8.408 ms stddev 3.980, 0 failed     
+> transaction type: <builtin: TPC-B (sort of)>      
+> scaling factor: 1      
+> query mode: simple       
+> number of clients: 8      
+> number of threads: 1      
+> maximum number of tries: 1     
+> duration: 60 s     
+> number of transactions actually processed: 58309     
+> number of failed transactions: 0 (0.000%)     
+> latency average = 8.229 ms     
+> latency stddev = 3.918 ms     
+> initial connection time = 26.292 ms     
+> tps = 971.918119 (without initial connection time)    
+
 7. Что изменилось и почему?
 8. Создать таблицу с текстовым полем и заполнить случайными или сгенерированными данным в размере 1млн строк:
 9. Посмотреть размер файла с таблицей:
