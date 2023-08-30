@@ -61,7 +61,7 @@ VM postgres-dz-08
 
 5. Применить параметры настройки PostgreSQL из прикрепленного к материалам занятия файла:    
 > Из прикрепленного файла скопировал настройки в конфигурационный файл (postgresql.auto.conf)   
-> открыл: sudo nano /var/lib/postgresql/15/main/postgresql.auto.conf      
+> открыл: sudo nano /var/lib/postgresql/15/main/postgresql.auto.conf         
 > перегрузил кластер.        
 
 6. Протестировать заново:    
