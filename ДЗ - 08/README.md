@@ -103,8 +103,23 @@ VM postgres-dz-08
 > Комманда в консоли: SELECT pg_size_pretty(pg_total_relation_size('table_text'));
 > Получился размер 128 Мб.       
 
-10. 5 раз обновить все строчки и добавить к каждой строчке любой символ:
+10. 5 раз обновить все строчки и добавить к каждой строчке любой символ:     
+> пять раз обновил все строки командой:       
+> test=# update table_text set text_field = 'noname1';
+> test=# update table_text set text_field = 'noname2';
+> test=# update table_text set text_field = 'noname3';
+> test=# update table_text set text_field = 'noname4';
+> test=# update table_text set text_field = 'noname5';      
+
 11. Посмотреть количество мертвых строчек в таблице и когда последний раз приходил автовакуум:
+> Посмотрел командой: SELECT relname, n_live_tup, n_dead_tup, trunc(100*n_dead_tup/(n_live_tup+1))::float "ratio%", last_autovacuum FROM pg_stat_user_TABLEs WHERE relname = 'table_text';
+> Результат:
+>   relname   | n_live_tup | n_dead_tup | ratio% |        last_autovacuum        
+------------+------------+------------+--------+-------------------------------
+ table_text |    1000000 |    1000000 |     99 | 2023-08-30 11:46:43.776323+00
+(1 row)
+> Получается миллион мертвых строчек и последний раз автовакуум запускался: 2023-08-30 11:46:43.776323+00   
+
 12. Подождать некоторое время, проверяя, пришел ли автовакуум:
 13. 5 раз обновить все строчки и добавить к каждой строчке любой символ:
 14. Посмотреть размер файла с таблицей:
