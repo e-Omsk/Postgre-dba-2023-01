@@ -105,14 +105,15 @@ VM postgres-dz-08
 
 10. 5 раз обновить все строчки и добавить к каждой строчке любой символ:     
 > пять раз обновил все строки командой:       
-> test=# update table_text set text_field = 'noname1';
-> test=# update table_text set text_field = 'noname2';
-> test=# update table_text set text_field = 'noname3';
-> test=# update table_text set text_field = 'noname4';
-> test=# update table_text set text_field = 'noname5';      
+> test=# update table_text set text_field = 'noname1';      
+> test=# update table_text set text_field = 'noname2';     
+> test=# update table_text set text_field = 'noname3';     
+> test=# update table_text set text_field = 'noname4';     
+> test=# update table_text set text_field = 'noname5';            
 
 11. Посмотреть количество мертвых строчек в таблице и когда последний раз приходил автовакуум:
-> Посмотрел командой: SELECT relname, n_live_tup, n_dead_tup, trunc(100*n_dead_tup/(n_live_tup+1))::float "ratio%", last_autovacuum FROM pg_stat_user_TABLEs WHERE relname = 'table_text';              
+> Посмотрел командой:           
+> SELECT relname, n_live_tup, n_dead_tup, trunc(100*n_dead_tup/(n_live_tup+1))::float "ratio%", last_autovacuum FROM pg_stat_user_TABLEs WHERE relname = 'table_text';             
 > Результат:             
 >   relname   | n_live_tup | n_dead_tup | ratio% |        last_autovacuum           
 ------------+------------+------------+--------+-------------------------------          
