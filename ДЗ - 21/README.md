@@ -8,7 +8,8 @@ VM postgres-dz-21
 Научиться секционировать таблицы.
 
 1. Секционировать большую таблицу из демо базы flights.    
-> Скопировал БД "Авиаперевозки" по ссылке: https://edu.postgrespro.ru/demo_small.zip    
+> Скопировал БД "Авиаперевозки" по ссылке:     
+> https://edu.postgrespro.ru/demo_small.zip     
 > Разархивировал и скопировал в GCE на VM postgres-dz-21 с помощью scp:
 > scp demo_small.sql e-Omsk@35.224.144.159:/home/e-Omsk       
 > раздал полномочия директории где лежал файл: chmod 755 /home/e-Omsk      
