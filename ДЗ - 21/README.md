@@ -16,7 +16,7 @@ VM postgres-dz-21
 > затянул данные в базу:       
 > "sudo -u postgres psql -f /home/e-Omsk/demo_small.sql"          
 > посмотрел какие таблицы есть: select * from pg_catalog.pg_tables;        
-> выбрал самую большую таблицу (получилась ticket_flights ):
+> выбрал самую большую таблицу (получилась ticket_flights ):      
 > select pg_size_pretty(pg_total_relation_size('"bookings"."ticket_flights"'));
 > 109 MB        
 > количестов строк: select count(*) from bookings.ticket_flights;
