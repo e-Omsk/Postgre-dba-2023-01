@@ -36,7 +36,7 @@ VM postgres-dz-21
 ) partition by list (fare_conditions);    
 > Далее секционировал по списку: Business, Comfort, Economy     
 > CREATE TABLE ticket_flights_Business partition of ticket_flights for values in ('Business');    
-> CREATE TABLE ticket_flights_Comfort partition of ticket_flights for values in ('Comfort');     
-> CREATE TABLE ticket_flights_Economy partition of ticket_flights for values in ('Economy');     
-> CREATE TABLE ticket_flights_Default partition of ticket_flights default ;
+> CREATE TABLE ticket_flights_Comfort partition of ticket_flights for values in ('Comfort');        
+> CREATE TABLE ticket_flights_Economy partition of ticket_flights for values in ('Economy');        
+> CREATE TABLE ticket_flights_Default partition of ticket_flights default ;        
 > 
