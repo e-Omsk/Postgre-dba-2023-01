@@ -23,7 +23,7 @@ VM postgres-dz-21
 > 1045726    
 > 
 > В файл "demo_small.sql" на хосте через редактор nano добавил в строку где создается таблица ticket_flights                
-> partition by list (fare_conditions)           
+> partition by list (fare_conditions):           
 > CREATE TABLE ticket_flights (       
     ticket_no character(13) NOT NULL,       
     flight_id integer NOT NULL,      
