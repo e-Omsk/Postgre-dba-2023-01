@@ -1,6 +1,6 @@
 GCE   
 Проект: postgres197605.  
-VM postgres-dz-21
+VM postgreSQL-1
 
 Секционирование таблицы
 
