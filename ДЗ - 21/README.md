@@ -23,17 +23,17 @@ VM postgres-dz-21
 > 1045726
 > Сециониование по списку:       
 > По колонке: fare_conditions. Три значения: Business, Comfort, Economy
-> Удалил таблицу: DROP table ticket_flights;     
+> Удалил БД Demo: DROP database demo;     
+> Создал БД Demo: CREATE database demo;      
+> Создал таблицу ticket_flights в БД demo;          
 > CREATE TABLE ticket_flights (     
->    ticket_no character(13) NOT NULL,    
->    flight_id integer NOT NULL,     
->    fare_conditions character varying(10) NOT NULL,     
->    amount numeric(10,2) NOT NULL,      
->    CONSTRAINT ticket_flights_amount_check CHECK ((amount >= (0)::numeric)),                 
->    CONSTRAINT ticket_flights_fare_conditions_check CHECK (((fare_conditions)::text = ANY        
->    (ARRAY[('Economy'::character varying)::text,('Comfort'::character varying)::text,      
->    ('Business'::character varying)::text])))                  
-> );    
+    ticket_no character(13) NOT NULL,       
+    flight_id integer NOT NULL,      
+    fare_conditions character varying(10) NOT NULL,
+    amount numeric(10,2) NOT NULL,
+    CONSTRAINT ticket_flights_amount_check CHECK ((amount >= (0)::numeric)),
+    CONSTRAINT ticket_flights_fare_conditions_check CHECK (((fare_conditions)::text = ANY (ARRAY[('Economy'::character varying)::text, ('Comfort'::character varying)::text, ('Business'::character varying)::text])))
+);   
 > CREATE TABLE ticket_flights_Business partition of ticket_flights for values in ('Business');    
 > CREATE TABLE ticket_flights_Comfort partition of ticket_flights for values in ('Comfort');     
 > CREATE TABLE ticket_flights_Economy partition of ticket_flights for values in ('Economy');     
