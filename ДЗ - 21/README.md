@@ -30,7 +30,7 @@ VM postgres-dz-21
 >    fare_conditions character varying(10) NOT NULL,     
 >    amount numeric(10,2) NOT NULL,      
 >    CONSTRAINT ticket_flights_amount_check CHECK ((amount >= (0)::numeric)),                 
->    CONSTRAINT ticket_flights_fare_conditions_check CHECK (((fare_conditions)::text = ANY
+>    CONSTRAINT ticket_flights_fare_conditions_check CHECK (((fare_conditions)::text = ANY        
 >    (ARRAY[('Economy'::character varying)::text,     
 >    ('Comfort'::character varying)::text,      
 >    ('Business'::character varying)::text])))                  
