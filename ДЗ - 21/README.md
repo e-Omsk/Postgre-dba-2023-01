@@ -24,7 +24,8 @@ VM postgres-dz-21
 > 
 > В файл "demo_small.sql" на хосте через редактор nano добавил в строку где создается таблица (ticket_flights)
 > в самом конце команды перед точкой запятой:                                   
-> partition by list (fare_conditions):              
+> partition by list (fare_conditions):
+>                           
 > CREATE TABLE ticket_flights (       
     ticket_no character(13) NOT NULL,       
     flight_id integer NOT NULL,      
@@ -32,7 +33,8 @@ VM postgres-dz-21
     amount numeric(10,2) NOT NULL,
     CONSTRAINT ticket_flights_amount_check CHECK ((amount >= (0)::numeric)),
     CONSTRAINT ticket_flights_fare_conditions_check CHECK (((fare_conditions)::text = ANY (ARRAY[('Economy'::character varying)::text, ('Comfort'::character varying)::text, ('Business'::character varying)::text])))            
-) partition by list (fare_conditions);    
+) partition by list (fare_conditions);
+>             
 > туда же в файл добавил после создания таблицы  секционирование по списку: Business, Comfort, Economy     
 > CREATE TABLE ticket_flights_Business partition of ticket_flights for values in ('Business');    
 > CREATE TABLE ticket_flights_Comfort partition of ticket_flights for values in ('Comfort');        
