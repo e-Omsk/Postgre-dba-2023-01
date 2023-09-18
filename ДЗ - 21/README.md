@@ -26,7 +26,7 @@ VM postgres-dz-21
 > Удалил БД Demo: DROP database demo;     
 > Создал БД Demo: CREATE database demo;      
 > Создал таблицу ticket_flights в БД demo;          
-> CREATE TABLE ticket_flights (     
+> CREATE TABLE ticket_flights (       
     ticket_no character(13) NOT NULL,       
     flight_id integer NOT NULL,      
     fare_conditions character varying(10) NOT NULL,
