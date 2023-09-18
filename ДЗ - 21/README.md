@@ -40,16 +40,16 @@ VM postgres-dz-21
 > CREATE TABLE ticket_flights_Default partition of ticket_flights default ;        
 >
 > Затягиваем файл: sudo -u postgres psql -f /home/e-Omsk/demo_small.sql
-> Результат:
-> select count(*) from bookings.ticket_flights;
-> count  1.045.726
-> select count(*) from bookings.ticket_flights_Business;     
-> count 107.642     
-> select count(*) from bookings.ticket_flights_Comfort;
-> count 17.291
-> select count(*) from bookings.ticket_flights_Economy;
-> count 920.793
-> select count(*) from bookings.ticket_flights_Default;
-> count 0
+> Результат:        
+> select count(*) from bookings.ticket_flights;         
+> count  1.045.726         
+> select count(*) from bookings.ticket_flights_Business;           
+> count 107.642          
+> select count(*) from bookings.ticket_flights_Comfort;       
+> count 17.291       
+> select count(*) from bookings.ticket_flights_Economy;       
+> count 920.793       
+> select count(*) from bookings.ticket_flights_Default;       
+> count 0         
 > Таблица секционировалась. Лвинная доля данных попала в секцию (таблицу) ticket_flights_Economy   
  
