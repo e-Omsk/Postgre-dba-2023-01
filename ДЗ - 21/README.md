@@ -21,4 +21,4 @@ VM postgres-dz-21
 > 109 MB            
 > количестов строк: select count(*) from bookings.ticket_flights;       
 > 1045726     
-> 
+> По колонке: fare_conditions. Три значения: Business, Comfort, Economy  
