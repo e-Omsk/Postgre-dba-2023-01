@@ -22,7 +22,8 @@ VM postgres-dz-21
 > количестов строк: select count(*) from bookings.ticket_flights;       
 > 1045726    
 > 
-> В файл "demo_small.sql" на хосте через редактор nano добавил в строку где создается таблица (ticket_flights)                             
+> В файл "demo_small.sql" на хосте через редактор nano добавил в строку где создается таблица (ticket_flights)
+> в самом конце команды перед точкой запятой:                                   
 > partition by list (fare_conditions):              
 > CREATE TABLE ticket_flights (       
     ticket_no character(13) NOT NULL,       
