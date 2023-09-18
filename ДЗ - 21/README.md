@@ -20,7 +20,7 @@ VM postgres-dz-21
 > select pg_size_pretty(pg_total_relation_size('"bookings"."ticket_flights"'));               
 > 109 MB            
 > количестов строк: select count(*) from bookings.ticket_flights;       
-> 1045726
+> 1045726    
 > 
 > В "demo_small.sql" на хосте через редактор nano добавил в строку где создается таблица ticket_flights
 > partition by list (fare_conditions)           
